@@ -348,7 +348,6 @@ ZMQ_EXPORT const char *zmq_msg_gets (const zmq_msg_t *msg_,
 #define ZMQ_REQ_RELAXED 53
 #define ZMQ_CONFLATE 54
 #define ZMQ_ZAP_DOMAIN 55
-#define ZMQ_ROUTER_HANDOVER 56
 #define ZMQ_TOS 57
 #define ZMQ_CONNECT_ROUTING_ID 61
 #define ZMQ_GSSAPI_SERVER 62

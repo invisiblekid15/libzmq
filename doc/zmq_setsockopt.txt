@@ -13,7 +13,7 @@ SYNOPSIS
 *int zmq_setsockopt (void '*socket', int 'option_name', const void '*option_value', size_t 'option_len');*
 
 Caution: All options, with the exception of ZMQ_SUBSCRIBE, ZMQ_UNSUBSCRIBE,
-ZMQ_LINGER, ZMQ_ROUTER_HANDOVER, ZMQ_ROUTER_MANDATORY, ZMQ_PROBE_ROUTER,
+ZMQ_LINGER, ZMQ_ROUTER_MANDATORY, ZMQ_PROBE_ROUTER,
 ZMQ_XPUB_VERBOSE, ZMQ_XPUB_VERBOSER, ZMQ_REQ_CORRELATE,
 ZMQ_REQ_RELAXED, ZMQ_SNDHWM and ZMQ_RCVHWM, only take effect for
 subsequent socket bind/connects.
@@ -754,22 +754,6 @@ Default value:: 0
 Applicable socket types:: ZMQ_REQ
 
 
-ZMQ_ROUTER_HANDOVER: handle duplicate client routing ids on ROUTER sockets
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-If two clients use the same routing id when connecting to a ROUTER, the
-results shall depend on the ZMQ_ROUTER_HANDOVER option setting. If that
-is not set (or set to the default of zero), the ROUTER socket shall reject
-clients trying to connect with an already-used routing id. If that option
-is set to 1, the ROUTER socket shall hand-over the connection to the new
-client and disconnect the existing one.
-
-[horizontal]
-Option value type:: int
-Option value unit:: 0, 1
-Default value:: 0
-Applicable socket types:: ZMQ_ROUTER
-
-
 ZMQ_ROUTER_MANDATORY: accept only routable messages on ROUTER sockets
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Sets the ROUTER socket behaviour when an unroutable message is encountered. A
@@ -818,12 +802,8 @@ when connecting to a ROUTER socket.
 A routing id must be at least one byte and at most 255 bytes long. Identities
 starting with a zero byte are reserved for use by the 0MQ infrastructure.
 
-If two clients use the same routing id when connecting to a ROUTER, the
-results shall depend on the ZMQ_ROUTER_HANDOVER option setting. If that
-is not set (or set to the default of zero), the ROUTER socket shall reject
-clients trying to connect with an already-used routing id. If that option
-is set to 1, the ROUTER socket shall hand-over the connection to the new
-client and disconnect the existing one.
+If two clients use the same routing id when connecting to a ROUTER, the ROUTER socket shall reject
+clients trying to connect with an already-used routing id. 
 
 [horizontal]
 Option value type:: binary data

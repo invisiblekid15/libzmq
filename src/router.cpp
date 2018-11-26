@@ -132,13 +132,6 @@ int zmq::router_t::xsetsockopt (int option_,
             }
             break;
 
-        case ZMQ_ROUTER_HANDOVER:
-            if (is_int && value >= 0) {
-                _handover = (value != 0);
-                return 0;
-            }
-            break;
-
 #ifdef ZMQ_BUILD_DRAFT_API
         case ZMQ_ROUTER_NOTIFY:
             if (is_int && value >= 0
